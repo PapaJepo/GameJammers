@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     public string Vertical = "Vertical_P1";
     Vector3 m;
     Transform templook;
+
+    public bool picked = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,6 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
         float x = Input.GetAxis(Horizontal);
         float z = Input.GetAxis(Vertical);

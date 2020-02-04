@@ -48,7 +48,6 @@ public class LoadingBar : MonoBehaviour
                 StartCoroutine("Load");
             }
             //LoadBar.value += 0.1f;
-            Debug.Log("Item in Range");
             //ColorSet.material.SetColor("", Color.red);
             // this.transform.position = HoldPos.position;
         }
