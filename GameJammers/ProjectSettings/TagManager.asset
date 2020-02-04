@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Carry
+  - Player1
+  - Player2
+  - CodeItem1
+  - ArtItem1
+  - AudioItem1
+  - SubmissionArea
   layers:
   - Default
   - TransparentFX
