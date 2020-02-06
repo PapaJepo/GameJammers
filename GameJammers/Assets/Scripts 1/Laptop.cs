@@ -57,10 +57,10 @@ public class Laptop : MonoBehaviour
             {
                 EndScreen.GetComponent<Animator>().SetTrigger("End");
                 reset = true;
-                Upload.SetActive(true);
-                Item1.GetComponent<LoadingBar>().ItemReady = false;
-                Item2.GetComponent<LoadingBar>().ItemReady = false;
-                Item3.GetComponent<LoadingBar>().ItemReady = false;
+                //Upload.SetActive(true);
+                //Item1.GetComponent<LoadingBar>().ItemReady = false;
+                //Item2.GetComponent<LoadingBar>().ItemReady = false;
+                //Item3.GetComponent<LoadingBar>().ItemReady = false;
                 float tempval = BugBar.value;
                 BugBar.value = BugBar.minValue;
                 Debug.Log(tempval);
