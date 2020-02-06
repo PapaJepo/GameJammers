@@ -13,7 +13,8 @@ public class LoadingBar : MonoBehaviour
     public bool ItemReady = false;
     public ItemCheck ItemBool;
 
-
+    public AudioSource SFX;
+   private  new AudioSource audio;
     public GameObject Reset;
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,14 @@ public class LoadingBar : MonoBehaviour
             if (LoadBar.value < LoadBar.maxValue && Input.GetKey(KeyCode.E) && ItemBool.iteminarea == true)
             {
                 StartCoroutine("Load");
+                
+            }
+            if (Input.GetKey(KeyCode.E) && ItemBool.iteminarea == true)
+            {
+                if(!SFX.isPlaying)
+                {
+                    SFX.Play();
+                }
             }
             //LoadBar.value += 0.1f;
             //ColorSet.material.SetColor("", Color.red);
@@ -56,8 +65,14 @@ public class LoadingBar : MonoBehaviour
         {
             if (LoadBar.value < LoadBar.maxValue && Input.GetKey(KeyCode.KeypadEnter) && ItemBool.iteminarea == true)
             {
+                //StartCoroutine("AudioPlay");
                 StartCoroutine("Load");
+              
             }
+            /*else
+            {
+                SFX.Pause();
+            }*/
             //LoadBar.value += 0.1f;
             //ColorSet.material.SetColor("", Color.red);
             // this.transform.position = HoldPos.position;
@@ -76,6 +91,13 @@ public class LoadingBar : MonoBehaviour
     IEnumerator Load()
     {
         LoadBar.value += 0.1f;
+       
         yield return new WaitForSeconds(0.1f);
     }
+
+   /* IEnumerator AudioPlay()
+    {
+        SFX.Play();
+        yield return new WaitForSeconds(5f);
+    }*/
 }

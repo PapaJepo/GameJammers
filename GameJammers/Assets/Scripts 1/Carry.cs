@@ -10,7 +10,10 @@ public class Carry : MonoBehaviour
     MeshRenderer ColorSet;
     public GameObject PlayerRef;
     public GameObject PlayerRef1;
-  
+    private AudioSource a_sfx;
+
+    public List<AudioSource> SFXLIST;
+    public List<AudioSource> SFXDROPLIST;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +27,8 @@ public class Carry : MonoBehaviour
        
             if (Input.GetMouseButton(0) && PickedUp1 == true)
             {
-                PlayerRef.GetComponent<Movement>().picked = true;
+                
+            PlayerRef.GetComponent<Movement>().picked = true;
             this.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 this.GetComponent<Rigidbody>().useGravity = false;
                 this.GetComponent<Collider>().isTrigger = true;
@@ -35,7 +39,8 @@ public class Carry : MonoBehaviour
             }
             else if (Input.GetMouseButton(1) && PickedUp2 == true)
             {
-                PlayerRef1.GetComponent<Movement>().picked = true;
+          
+            PlayerRef1.GetComponent<Movement>().picked = true;
                 this.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 this.GetComponent<Rigidbody>().useGravity = false;
                 this.GetComponent<Collider>().isTrigger = true;
@@ -56,6 +61,27 @@ public class Carry : MonoBehaviour
                 PickedUp2 = false;
 
             }
+
+
+            if(Input.GetMouseButtonDown(0) && PickedUp1 == true)
+        {
+            StartCoroutine("SFXpause");
+        }
+        if (Input.GetMouseButtonDown(1) && PickedUp2 == true)
+        {
+            StartCoroutine("SFXpause");
+        }
+        /*
+        if (Input.GetMouseButtonUp(0) && PickedUp1 == true) 
+        {
+            StartCoroutine("SFXDrop");
+        }
+        if (Input.GetMouseButtonUp(1) && PickedUp2 == true) 
+        {
+            StartCoroutine("SFXDrop");
+        }
+        */
+
 
         if (Input.GetMouseButtonUp(1))
         {
@@ -126,5 +152,23 @@ public class Carry : MonoBehaviour
         }
     }
     */
+    IEnumerator SFXpause()
+    {
+        a_sfx = SFXLIST[Random.Range(0, SFXLIST.Count)];
+        if (!a_sfx.isPlaying)
+        {
+            a_sfx.Play();
+        }
+        yield return new WaitForSeconds(4f);
+    }
 
+    IEnumerator SFXDrop()
+    {
+        a_sfx = SFXDROPLIST[Random.Range(0, SFXDROPLIST.Count)];
+        if (!a_sfx.isPlaying)
+        {
+            a_sfx.Play();
+        }
+        yield return new WaitForSeconds(4f);
+    }
 }

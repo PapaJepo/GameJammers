@@ -14,6 +14,9 @@ public class Movement : MonoBehaviour
     Transform templook;
     public Animator g_anim;
     public bool picked = false;
+
+
+    public List<AudioSource> SFXLIST;
     // Start is called before the first frame update
     void Start()
     {
