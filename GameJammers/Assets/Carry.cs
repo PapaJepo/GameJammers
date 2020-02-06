@@ -9,6 +9,7 @@ public class Carry : MonoBehaviour
     bool PickedUp1,PickedUp2;
     MeshRenderer ColorSet;
     public GameObject PlayerRef;
+    public GameObject PlayerRef1;
   
     // Start is called before the first frame update
     void Start()
@@ -27,17 +28,19 @@ public class Carry : MonoBehaviour
             this.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 this.GetComponent<Rigidbody>().useGravity = false;
                 this.GetComponent<Collider>().isTrigger = true;
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 this.transform.parent = HoldPos.transform;
                 this.transform.position = HoldPos.position;
 
             }
             else if (Input.GetMouseButton(1) && PickedUp2 == true)
             {
-                PlayerRef.GetComponent<Movement>().picked = true;
+                PlayerRef1.GetComponent<Movement>().picked = true;
                 this.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 this.GetComponent<Rigidbody>().useGravity = false;
                 this.GetComponent<Collider>().isTrigger = true;
-                this.transform.parent = HoldPos1.transform;
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            this.transform.parent = HoldPos1.transform;
                 this.transform.position = HoldPos1.position;
             }
             
@@ -47,11 +50,23 @@ public class Carry : MonoBehaviour
                 this.transform.parent = null;
                 this.GetComponent<Rigidbody>().useGravity = true;
                 this.GetComponent<Collider>().isTrigger = false;
-                PickedUp1 = false;
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+               PickedUp1 = false;
                 PickedUp2 = false;
 
             }
-       }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            PlayerRef1.GetComponent<Movement>().picked = false;
+            this.transform.parent = null;
+            this.GetComponent<Rigidbody>().useGravity = true;
+            this.GetComponent<Collider>().isTrigger = false;
+            PickedUp1 = false;
+            PickedUp2 = false;
+
+        }
+    }
      
 
  
@@ -64,7 +79,8 @@ public class Carry : MonoBehaviour
                 //ColorSet.material.SetColor("", Color.red);
                 // this.transform.position = HoldPos.position;
             }
-            else if (other.gameObject.CompareTag("Player2")&& PlayerRef.GetComponent<Movement>().picked == false)
+
+        if (other.gameObject.CompareTag("Player2")&& PlayerRef1.GetComponent<Movement>().picked == false)
             {
                 PickedUp2 = true;
                 //ColorSet.material.SetColor("", Color.red);
@@ -81,7 +97,8 @@ public class Carry : MonoBehaviour
             PickedUp2 = false;
 
         }
-        else if (other.gameObject.CompareTag("Player2"))
+
+        if (other.gameObject.CompareTag("Player2"))
         {
             PickedUp1 = false;
             PickedUp2 = false;
