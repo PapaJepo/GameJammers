@@ -51,6 +51,17 @@ public class LoadingBar : MonoBehaviour
             //ColorSet.material.SetColor("", Color.red);
             // this.transform.position = HoldPos.position;
         }
+
+        if (other.gameObject.CompareTag("Player2"))
+        {
+            if (LoadBar.value < LoadBar.maxValue && Input.GetKey(KeyCode.KeypadEnter) && ItemBool.iteminarea == true)
+            {
+                StartCoroutine("Load");
+            }
+            //LoadBar.value += 0.1f;
+            //ColorSet.material.SetColor("", Color.red);
+            // this.transform.position = HoldPos.position;
+        }
         /*
         else if (other.gameObject.CompareTag("Player2"))
         {

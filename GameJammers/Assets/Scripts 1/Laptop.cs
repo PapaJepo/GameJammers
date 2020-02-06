@@ -11,7 +11,7 @@ public class Laptop : MonoBehaviour
     public GameObject Item3;
     public bool reset = false;
     public GameObject Upload;
-
+    public GameObject EndScreen;
     public GameObject RdyAnim;
     // Start is called before the first frame update
     void Start()
@@ -55,6 +55,7 @@ public class Laptop : MonoBehaviour
         {
             if(Item1.GetComponent<LoadingBar>().ItemReady == true && Item2.GetComponent<LoadingBar>().ItemReady == true && Item3.GetComponent<LoadingBar>().ItemReady == true)
             {
+                EndScreen.GetComponent<Animator>().SetTrigger("End");
                 reset = true;
                 Upload.SetActive(true);
                 Item1.GetComponent<LoadingBar>().ItemReady = false;

@@ -51,7 +51,8 @@ public class Carry : MonoBehaviour
                 this.GetComponent<Rigidbody>().useGravity = true;
                 this.GetComponent<Collider>().isTrigger = false;
             this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-               PickedUp1 = false;
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            PickedUp1 = false;
                 PickedUp2 = false;
 
             }
@@ -62,6 +63,9 @@ public class Carry : MonoBehaviour
             this.transform.parent = null;
             this.GetComponent<Rigidbody>().useGravity = true;
             this.GetComponent<Collider>().isTrigger = false;
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+
             PickedUp1 = false;
             PickedUp2 = false;
 
