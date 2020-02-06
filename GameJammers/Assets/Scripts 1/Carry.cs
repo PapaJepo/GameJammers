@@ -25,7 +25,7 @@ public class Carry : MonoBehaviour
     void Update()
     {
        
-            if (Input.GetMouseButton(0) && PickedUp1 == true)
+            if (Input.GetKey(KeyCode.F) && PickedUp1 == true)
             {
                 
             PlayerRef.GetComponent<Movement>().picked = true;
@@ -37,7 +37,7 @@ public class Carry : MonoBehaviour
                 this.transform.position = HoldPos.position;
 
             }
-            else if (Input.GetMouseButton(1) && PickedUp2 == true)
+            else if (Input.GetMouseButton(0) && PickedUp2 == true)
             {
           
             PlayerRef1.GetComponent<Movement>().picked = true;
@@ -49,7 +49,7 @@ public class Carry : MonoBehaviour
                 this.transform.position = HoldPos1.position;
             }
             
-            if(Input.GetMouseButtonUp(0))
+            if(Input.GetKeyUp(KeyCode.F))
             {
                 PlayerRef.GetComponent<Movement>().picked = false;
                 this.transform.parent = null;
@@ -63,11 +63,11 @@ public class Carry : MonoBehaviour
             }
 
 
-            if(Input.GetMouseButtonDown(0) && PickedUp1 == true)
+            if(Input.GetKeyDown(KeyCode.F) && PickedUp1 == true)
         {
             StartCoroutine("SFXpause");
         }
-        if (Input.GetMouseButtonDown(1) && PickedUp2 == true)
+        if (Input.GetMouseButtonDown(0) && PickedUp2 == true)
         {
             StartCoroutine("SFXpause");
         }
@@ -83,7 +83,7 @@ public class Carry : MonoBehaviour
         */
 
 
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(0))
         {
             PlayerRef1.GetComponent<Movement>().picked = false;
             this.transform.parent = null;

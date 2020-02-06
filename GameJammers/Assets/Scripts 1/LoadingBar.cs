@@ -44,12 +44,12 @@ public class LoadingBar : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player1"))
         {
-            if (LoadBar.value < LoadBar.maxValue && Input.GetKey(KeyCode.E) && ItemBool.iteminarea == true)
+            if (LoadBar.value < LoadBar.maxValue && Input.GetKey(KeyCode.G) && ItemBool.iteminarea == true)
             {
                 StartCoroutine("Load");
                 
             }
-            if (Input.GetKey(KeyCode.E) && ItemBool.iteminarea == true)
+            if (Input.GetKey(KeyCode.G) && ItemBool.iteminarea == true)
             {
                 if(!SFX.isPlaying)
                 {
@@ -63,11 +63,18 @@ public class LoadingBar : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player2"))
         {
-            if (LoadBar.value < LoadBar.maxValue && Input.GetKey(KeyCode.KeypadEnter) && ItemBool.iteminarea == true)
+            if (LoadBar.value < LoadBar.maxValue && Input.GetMouseButton(1) && ItemBool.iteminarea == true)
             {
                 //StartCoroutine("AudioPlay");
                 StartCoroutine("Load");
               
+            }
+            if (Input.GetMouseButton(1) && ItemBool.iteminarea == true)
+            {
+                if (!SFX.isPlaying)
+                {
+                    SFX.Play();
+                }
             }
             /*else
             {
