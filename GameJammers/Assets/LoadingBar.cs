@@ -18,8 +18,7 @@ public class LoadingBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        Finish.SetActive(false);
+        //Finish.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,7 +26,8 @@ public class LoadingBar : MonoBehaviour
     {
         if(LoadBar.value >= LoadBar.maxValue)
         {
-            Finish.SetActive( true);
+            Finish.GetComponent<Animator>().SetTrigger("Tick");
+            //Finish.SetActive( true);
             ItemReady = true;
             if (Reset.GetComponent<Laptop>().reset == true)
             {

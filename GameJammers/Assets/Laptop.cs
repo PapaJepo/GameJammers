@@ -11,9 +11,12 @@ public class Laptop : MonoBehaviour
     public GameObject Item3;
     public bool reset = false;
     public GameObject Upload;
+
+    public GameObject RdyAnim;
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -32,7 +35,10 @@ public class Laptop : MonoBehaviour
             StartCoroutine("Load");
         }
 
-
+        if(Item1.GetComponent<LoadingBar>().ItemReady == true&& Item2.GetComponent<LoadingBar>().ItemReady == true&& Item3.GetComponent<LoadingBar>().ItemReady == true)
+        {
+            RdyAnim.GetComponent<Animator>().SetTrigger("Ready");
+        }
 
 
     }
@@ -54,8 +60,9 @@ public class Laptop : MonoBehaviour
                 Item1.GetComponent<LoadingBar>().ItemReady = false;
                 Item2.GetComponent<LoadingBar>().ItemReady = false;
                 Item3.GetComponent<LoadingBar>().ItemReady = false;
+                float tempval = BugBar.value;
                 BugBar.value = BugBar.minValue;
-
+                Debug.Log(tempval);
             }
         }
     }
