@@ -20,12 +20,12 @@ public class Poster : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player1")&& Input.GetKey(KeyCode.E))
+        if (other.gameObject.CompareTag("Player1")&& Input.GetKey(KeyCode.G))
         {
             PosterUI.SetActive(true);
         }
 
-        if (other.gameObject.CompareTag("Player2") && Input.GetKey(KeyCode.KeypadEnter))
+        if (other.gameObject.CompareTag("Player2") && Input.GetMouseButton(1)) ;
         {
             PosterUI.SetActive(true);
         }
